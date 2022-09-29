@@ -11,4 +11,42 @@
  * 最終的に、全体が統合されるまで、同様の処理を繰り返します。
  */
 
-const array = [13, 1, 5, 2, 43, 30, 21, 55];
+function shellSort(numbers, array_size) {
+  var increment, temp;
+  //4離れた要素と比較
+  increment = 4;
+
+  while (increment > 0) {
+    for (var i = 0; i < array_size; i++) {
+      var j = i;
+      temp = numbers[i];
+
+      console.log("前 間隔", increment);
+      console.log("前 Jの値", j);
+      console.log("前　配列", numbers);
+      while (j >= increment && numbers[j - increment] > temp) {
+        numbers[j] = numbers[j - increment];
+        j -= increment;
+      }
+      console.log("後 間隔", increment);
+      console.log("後 Jの値", j);
+      console.log("後　配列", numbers);
+      numbers[j] = temp;
+    }
+    //incrementを更新
+    if (increment / 2 != 0) increment = parseInt(increment / 2);
+    else if (increment == 1) increment = 0;
+    else increment = 1;
+  }
+}
+//ここから開始
+var h = [6, 3, 8, 4, 5, 1, 2, 9, 7, 0];
+// for (var i = 0; i < h.length; i++) {
+//   console.log(h[i]);
+// }
+
+//シェルソート
+shellSort(h, h.length);
+// for (var i = 0; i < h.length; i++) {
+//   console.log(h[i]);
+// }
